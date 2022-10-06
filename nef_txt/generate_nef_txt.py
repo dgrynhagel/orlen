@@ -17,7 +17,7 @@ def f_Loop(aFolderListItem, template_file_name):
                 if aFolderItemDir.lower().endswith(('.nef')):
                     print ("File %s will be parsed under : %s directory"% (aFolderItemDir, fName))
                     names.append(os.path.split(aFolderItemDir)[1].upper().replace('.NEF','.txt'))
-                    #parse_file(template_file_name,aFolderItemDir) #removed to just generate txt filenames list $TODO - remove it
+                    #parse_file(template_file_name,aFolderItemDir) #removed to just generate txt filenames list 
     return names
                              
 
