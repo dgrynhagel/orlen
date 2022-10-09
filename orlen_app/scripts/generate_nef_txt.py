@@ -18,8 +18,7 @@ def f_Loop(aFolderListItem):
                     print ("File %s will be parsed under : %s directory"% (aFolderItemDir, fName))
                     names.append(os.path.split(aFolderItemDir)[1].upper().replace('.NEF','.txt'))
                     #parse_file(template_file_name,aFolderItemDir) #removed to just generate txt filenames list 
-    return names
-                             
+    return names                           
 
 def parse_file(template_file_name,nef_file_name):
     output_file_name = os.path.split(nef_file_name)[1].upper().replace('.NEF','.txt') #you can add subfolder for new files here
@@ -45,15 +44,3 @@ def generate_files(file_names_list, template_file_name,out_folder):
                         o.write(new_line)
                 else:
                     o.write(line)
-        
-
-
-def main():
-    # get current directory path
-    current_dir =  os.path.abspath(os.getcwd())
-    #start loop under path
-    names = f_Loop(current_dir+'/1sza noc','template.txt')
-   # print(names)
-    generate_files(names,'template.txt')
-if __name__ == '__main__':
-	main()
