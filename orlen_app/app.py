@@ -33,9 +33,15 @@ def main():
             for file in output_list:
                 window['filenamelist'].print(file)  
         if event == 'Generate':
+            fo = values['nef_folder']
+            output_list = g.f_Loop(fo)
             template = values['txt_file']
             output_dir = values['txt_folder']
-            g.generate_files(output_list,template,output_dir)
+            try:
+                g.generate_files(output_list,template,output_dir)
+                sg.Popup('Txt files generated successfully.')
+            except Exception:
+                sg.Popup('Failed to generate files.')
         elif event in ('Exit', None):
             break
 
