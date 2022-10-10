@@ -3,10 +3,10 @@ import os
 import scripts.generate_nef_txt as g
 
 def main():
-    sg.theme('TanBlue')
+    sg.theme('Topanga')
     current_dir =  os.path.abspath(os.getcwd())
     layout = [
-        [sg.Text("Welcome in Orlen app tools set ")],
+        [sg.Text("Welcome in Orlen app tools set ", font = ("Arial", 24))],
         [sg.Text('_' * 80)],
         [sg.Text("This part will create txt files for each NEF")],
         [sg.Text('Your NEF Folder', size=(15, 1), justification='right'),
@@ -21,6 +21,7 @@ def main():
         [sg.Text('_' * 80)],
         [sg.Button('Close')]
     ]
+    
     window = sg.Window('Orlen app', layout, finalize=True)
 
     while True:

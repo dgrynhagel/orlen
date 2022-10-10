@@ -1,4 +1,4 @@
-# pyscript PWA Example
+# Basic operations via pySimpleGUI 
 
 This app is simple python app with pySimpleGUI which allow to perform basic scripts usefull in astrography data processing. 
 
