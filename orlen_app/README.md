@@ -8,7 +8,7 @@ To run the app, just start it as a Flask application (keep the app running for t
 ```bash
 
 python3 -m venv orlen
-. /orlen/bin/activate
+. /orlen/bin/activate or source orlen/bin/activate
 pip install -r requirements.txt
 
 
