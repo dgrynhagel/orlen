@@ -22,14 +22,13 @@ def main():
     current_dir =  os.path.abspath(os.getcwd())
     SEC1_KEY = '-SECTION1-'
     SEC2_KEY = '-SECTION2-'
-    section1 = [[sg.Input('Input sec 1', key='-IN1-')],
-            [sg.Input(key='-IN11-')],
-            [sg.Button('Button section 1',  button_color='yellow on green'),
-             sg.Button('Button2 section 1', button_color='yellow on green'),
-             sg.Button('Button3 section 1', button_color='yellow on green')]]
+    fitsfolder = [[sg.Text('Your FITS Folder', size=(15, 1), justification='right'),
+            sg.InputText('...FITS folder...', key='fits_folder'), sg.FolderBrowse(initial_folder=current_dir)],
+            [sg.Button('Bulk Generate')]]
 
     singlefile = [[sg.Text('Browse for FITS file:', size=(15, 1), justification='right'),
-            sg.InputText('', key='fits_file'), sg.FileBrowse(initial_folder=current_dir, file_types=(("FITS files", "*.fits"),))]
+            sg.InputText('', key='fits_file'), sg.FileBrowse(initial_folder=current_dir, file_types=(("FITS files", "*.fits"),))],
+            [sg.Button('Generate one')]
             ]
 
     layout = [
@@ -49,10 +48,8 @@ def main():
         [sg.Text("Add tag to FITS file", font = ("Arial", 18))],
         [sg.Radio('Single file processing', "bulk", default=False, size=(20,1), k='single', enable_events=True, key='R1'), sg.Radio('Bulk action', "bulk", default=False, size=(20,1), k='bulk',enable_events=True, key='R1')],
         [sg.Text('Tag name:',  justification='left'), sg.Input("ORLEN", key='tagname')],
-        [Collapsible(section1, SEC1_KEY,  '', collapsed=True)],
-        [Collapsible(singlefile, SEC2_KEY,  '', collapsed=True)],
-        [sg.Text('Your FITS files folder', size=(15, 1), justification='right'),
-            sg.InputText('...*fits folder...', key='fits_folder'), sg.FolderBrowse(initial_folder=current_dir)],
+        [Collapsible(fitsfolder, SEC1_KEY,  '', ('+','-'),collapsed=True)],
+        [Collapsible(singlefile, SEC2_KEY,  '',  ('+','-'),collapsed=True)],
         [sg.Text('_' * 80)],
         [sg.Button('Close')]
     ]
@@ -82,8 +79,9 @@ def main():
         if event =='R12':
             window[SEC1_KEY].update(visible=not window[SEC1_KEY].visible)
             window[SEC1_KEY+'-BUTTON-'].update(window[SEC1_KEY].metadata[0] if window[SEC1_KEY].visible else window[SEC1_KEY].metadata[1])
+        
         if event == 'R1':
-            window[SEC2_KEY].update(visible=not window[SEC2_KEY].visible)
+            window[SEC2_KEY].update(visible=not window[SEC1_KEY].visible)
             window[SEC2_KEY+'-BUTTON-'].update(window[SEC2_KEY].metadata[0] if window[SEC2_KEY].visible else window[SEC2_KEY].metadata[1])
       
         elif event in ('Exit', None):
