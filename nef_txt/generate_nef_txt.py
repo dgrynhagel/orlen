@@ -29,6 +29,7 @@ def parse_file(template_file_name,nef_file_name):
             for line in lines:
                 if line.rstrip().lower().endswith('.nef'):
                     new_line = line[:line.rfind('\\',0,len(line))+1]+output_file_name+line[line.upper().rfind('.NEF',0,len(line))+4:]
+                    print (new_line)
                     o.write(new_line)
                 else:
                     o.write(line)
