@@ -58,7 +58,7 @@ def main():
             fo = values['nef_folder']
             output_list = g.f_Loop(fo)[0]
             file_type_list = g.f_Loop(fo)[1]
-            print(g.f_Loop(fo)[1])
+         #   print(g.f_Loop(fo)[1])
             for file in output_list:
                 window['filenamelist'].print(file)  
             new_items = [[sg.Checkbox(f"{item[1].upper()}", key=('-FILE-',item[1].upper()), default=True)] for item in enumerate(file_type_list)]
